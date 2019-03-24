@@ -1,7 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+#define OK 1
+
 #define maxsize 1000
+
+typedef  int Status;
 
 typedef float datatype;
 
@@ -197,7 +201,7 @@ LinkList fun19(LinkList L, datatype mink, datatype maxk)
 	return L;
 }
 
-void fun21(SqList* L)
+Status fun21(SqList* L)
 {
 	int i, n = L->length;
 	datatype temp;
@@ -207,9 +211,10 @@ void fun21(SqList* L)
 		L->elem[i] = L->elem[n - 1 - i];
 		L->elem[n - 1 - i] = temp;
 	}
+	return OK;
 }
 
-void fun24(LinkList A, LinkList B, LinkList C)
+Status fun24(LinkList A, LinkList B, LinkList C)
 {
 	LinkList pa = A->next, pb = B->next, pc = A;
 	C = pc;
@@ -233,9 +238,10 @@ void fun24(LinkList A, LinkList B, LinkList C)
 	LinkList iC = inverse(C);	//C¾ÍµØÄæÖÃ
 	C = iC;
 	print_linklist(C);
+	return OK;
 }
 
-void fun29(SqList* A, SqList* B, SqList* C)
+Status fun29(SqList* A, SqList* B, SqList* C)
 {
 	int i = 0, j = 0, k = 0, n = 0;
 	while (i < A->length && j < B->length && k < C->length)
@@ -269,9 +275,10 @@ void fun29(SqList* A, SqList* B, SqList* C)
 		}
 		A->length = (--n);
 	}
+	return OK;
 }
 
-void fun30(LinkList A, LinkList B, LinkList C)
+Status fun30(LinkList A, LinkList B, LinkList C)
 {
 	LinkList pa, pb, pc, pt;
 	pa = A->next;
@@ -304,6 +311,7 @@ void fun30(LinkList A, LinkList B, LinkList C)
 			}
 		}
 	}
+	return OK;
 }
 
 int main()
