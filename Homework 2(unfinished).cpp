@@ -1,11 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define TRUE 1
-#define FALSE 0
-#define OK 1
-#define ERROR 0
-#define INFEASIBLE -1
-#define OVERFLOW -2
 
 #define maxsize 1000
 
@@ -234,9 +228,9 @@ void fun24(LinkList A, LinkList B, LinkList C)
 			pb = pb->next;
 		}
 	}
-	pc->next = pa ? pa : pb;	//CÍê³ÉµİÔöÅÅĞò
+	pc->next = pa ? pa : pb;	//CÃÃªÂ³Ã‰ÂµÃÃ”Ã¶Ã…Ã…ÃÃ²
 	free(B);
-	LinkList iC = inverse(C);	//C¾ÍµØÄæÖÃ
+	LinkList iC = inverse(C);	//CÂ¾ÃÂµÃ˜Ã„Ã¦Ã–Ãƒ
 	C = iC;
 	print_linklist(C);
 }
