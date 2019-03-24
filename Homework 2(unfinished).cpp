@@ -164,7 +164,7 @@ void print_linklist(LinkList L)
 	printf("\n");
 }
 
-
+//TEST Function
 LinkList fun19(LinkList L, datatype mink, datatype maxk)
 {
 	LinkList p = L;
@@ -228,12 +228,50 @@ void fun24(LinkList A, LinkList B, LinkList C)
 			pb = pb->next;
 		}
 	}
-	pc->next = pa ? pa : pb;	//CÃÃªÂ³Ã‰ÂµÃÃ”Ã¶Ã…Ã…ÃÃ²
+	pc->next = pa ? pa : pb;	//CÍê³ÉµİÔöÅÅĞò
 	free(B);
-	LinkList iC = inverse(C);	//CÂ¾ÃÂµÃ˜Ã„Ã¦Ã–Ãƒ
+	LinkList iC = inverse(C);	//C¾ÍµØÄæÖÃ
 	C = iC;
 	print_linklist(C);
 }
+
+void fun29(SqList* A, SqList* B, SqList* C)
+{
+	int i = 0, j = 0, k = 0, n = 0;
+	while (i < A->length && j < B->length && k < C->length)
+	{
+		if (B->elem[j] < C->elem[k])
+				j++;
+		else if(B->elem[j] > C->elem[k])
+				k++;
+		else
+		{
+			if (B->elem[j] < A->elem[i])
+			{
+				j++;
+				k++;
+			}
+			else if (B->elem[j] > A->elem[i])
+			{
+				if (n != i)
+					A->elem[n++] = A->elem[i++];
+			}
+			else
+				i++;
+		}
+		
+	}
+	if (i <= A->length&&n != i)
+	{
+		while (i<=A->length)
+		{
+			A->elem[n++] = A->elem[i++];
+		}
+		A->length = (--n);
+	}
+}
+
+
 
 int main()
 {
@@ -280,6 +318,29 @@ int main()
 	LinkList C = init();
 	printf("TEXT 2.24:\n");
 	fun24(A, B, C);*/
+
+	/*TEXT 2.29*/
+	SqList* A = init_seqlist();
+	for (i = 0; i < 7; ++i)
+	{
+		insert_seqlist(A, i, i * 2);
+	}
+	SqList* B = init_seqlist();
+	for (i = 0; i < 6; ++i)
+	{
+		insert_seqlist(B, i, i * 3);
+	}
+	SqList* C = init_seqlist();
+	for (i = 0; i < 5; ++i)
+	{
+		insert_seqlist(C, i, i * (i-1));
+	}
+	print_seqlist(A);
+	print_seqlist(B);
+	print_seqlist(C);
+	printf("TEXT 2.29:\n");
+	fun29(A, B, C);
+	print_seqlist(A);
 
 	return 1;
 }
