@@ -26,7 +26,7 @@ void CreateCL(CLinkList head, int n)
 		p = InitNode();
 		p->No = i;
 		printf("No.%d Code=", i);
-		scanf_s("%d", &p->code);
+		scanf("%d", &p->code);
 		tail->next = p;
 		tail = p;
 	}
@@ -59,9 +59,9 @@ int main()
 {
 	int m, n;
 	printf("m=");
-	scanf_s("%d", &m);
+	scanf("%d", &m);
 	printf("n=");
-	scanf_s("%d", &n);
+	scanf("%d", &n);
 	CLinkList L=InitNode();
 	CreateCL(L, n);
 	if (m%n)
