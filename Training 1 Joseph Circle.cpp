@@ -35,7 +35,7 @@ void CreateCL(CLinkList head, int n)
 
 void Solve(CLinkList L, int m)
 {
-	CLinkList p=L->next, q=NULL;
+	CLinkList p=L->next, q=L;
 
 	while (p->next != p)
 	{
