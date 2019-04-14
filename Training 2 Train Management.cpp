@@ -27,11 +27,10 @@ Status InitStack(SqStack &S)
 	S.stacksize = STACK_INIT_SIZE;
 }
 
-Status GetTop(SqStack S, SElemType &e)
+Status StackEmpty(SqStack S)
 {
 	if (S.top == S.base)
 		return ERROR;
-	e = *(S.top - 1);
 	return OK;
 }
 
@@ -67,27 +66,26 @@ Status PrintArray(int *s,int n)
 
 void Move(SqStack temp, int In[], int Out[], int i,int j,int n)
 {
-	SElemType e;
 	if (i < n)					//ÈëÕ»
 	{
 		Push(temp, In[i]);
 		Move(temp, In, Out, i + 1, j, n);
 		Pop(temp, Out[j]);
 	}
-	if (GetTop(temp, e))		//³öÕ»
+	if (StackEmpty(temp))		//³öÕ»
 	{
 		Pop(temp, Out[j]);
 		Move(temp, In, Out, i, j + 1, n);
 		Push(temp, Out[j]);
 	}
-	if (j >= n && !GetTop(temp, e))
+	if (j >= n && !StackEmpty(temp))
 	{
 		printf("\t\tOut---->");
 		PrintArray(Out, n);
 	}	
 }
 
-#define N 4
+#define N 5
 
 int main()
 {
