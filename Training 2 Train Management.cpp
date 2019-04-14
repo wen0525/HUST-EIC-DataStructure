@@ -30,8 +30,8 @@ Status InitStack(SqStack &S)
 Status StackEmpty(SqStack S)
 {
 	if (S.top == S.base)
-		return ERROR;
-	return OK;
+		return OK;
+	return ERROR;
 }
 
 Status Push(SqStack &S, SElemType e)
@@ -72,13 +72,13 @@ void Move(SqStack temp, int In[], int Out[], int i,int j,int n)
 		Move(temp, In, Out, i + 1, j, n);
 		Pop(temp, Out[j]);
 	}
-	if (StackEmpty(temp))		//³öÕ»
+	if (!StackEmpty(temp))		//³öÕ»
 	{
 		Pop(temp, Out[j]);
 		Move(temp, In, Out, i, j + 1, n);
 		Push(temp, Out[j]);
 	}
-	if (j >= n && !StackEmpty(temp))
+	if (j >= n && StackEmpty(temp))
 	{
 		printf("\t\tOut---->");
 		PrintArray(Out, n);
