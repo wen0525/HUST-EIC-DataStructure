@@ -48,57 +48,12 @@ int Index_KMP(String S, String T, int pos)
 		return -1;
 }
 
-
-
-//Test 4.17
-void Replace(String S, String T, String V)
-{
-	ElemType temp[100];
-	int i = 0, j = 0, k = 0,m;
-	int Tlen = strlen(T), Vlen = strlen(V);
-	while ((i = Index_KMP(S, T, i)) != -1)
-	{
-		for (m = k; m <= i; m++)
-		{
-			temp[j] = S[m];
-			j++;
-		}
-		for (m = 0; m <= Vlen; m++)
-		{
-			temp[j] = V[m];
-			j++;
-		}
-		i += Tlen;
-		k = i;printf("**\n");
-	}
-	for (m = k; m < strlen(S); m++)
-	{
-		temp[j] = S[m];
-		j++;
-	}
-	puts(temp);
-}
-
-
-
-
-
-
-
-
-
 int main()
 {
-	/*Testing data for Index_KMP
+	/*Testing data for Index_KMP*/
 	ElemType S[] = "acabaabaabcacaabc";
 	ElemType T[] = "abaabcac";
-	printf("%d\n", Index_KMP(S, T, 0));*/
-	ElemType S[100] = "abc00abc00abcabc00abc";
-	ElemType T[10] = "00";
-	ElemType V[10] = "def";
-	puts(S);
-	Replace(S, T, V);
-
+	printf("%d\n", Index_KMP(S, T, 0));
 
 	return 0;
 }
